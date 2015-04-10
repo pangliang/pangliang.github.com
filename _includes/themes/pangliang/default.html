@@ -1,0 +1,74 @@
+{% include JB/setup %}
+
+<!DOCTYPE html>
+<html lang="cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }} &larr; {{ site.title }}</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>{{ page.title }} &larr; {{ site.title }}</title>
+    <meta name="author" content="{{ site.author.name }}" />
+    <link rel="start" href="{{ HOME_PATH }}" />
+    {% if page.keywords %}
+    <meta name="keywords" content="{{ page.keywords }}">
+    {% endif %}
+    {% if page.feed %}
+    <link rel="alternate" type="application/atom+xml" href="{{ page.feed }}" title="RSS feed" />
+    {% endif %}
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="{{ ASSET_PATH }}/css/syntax.css" type="text/css" />
+
+    <!-- Bootstrap -->
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <script src="{{ ASSET_PATH }}/js/main.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="//fonts.useso.com/css?family=Merriweather:300,700,700italic,300italic|Open%20Sans:700,400" />
+
+    <!-- Blog -->
+    <link rel="stylesheet" href="{{ ASSET_PATH }}/css/blog.css">
+  </head>
+  <body>
+    {% include themes/pangliang/header.html %}
+    
+    <div class="container">
+      <!-- content -->
+      <div class="row">
+        <div class="col-md-8">
+          {{ content }}
+        </div>
+        <div class="col-md-4">
+           {% include themes/pangliang/siderbar.html %}
+        </div>
+      </div>
+      <!-- content end -->
+
+      
+    </div>
+
+    <!-- 底部 -->
+    <footer class="row" >
+      <section class="col-md-2"><a href="{{ site.author.weibo }}">{{ site.author.name }}</a>  © 2014 {% include JB/analytics %} <a target="_blank" href="http://www.amazingcounters.com"><img border="0" src="http://cc.amazingcounters.com/counter.php?i=3182384&c=9547465" alt="AmazingCounters.com"></a></section>
+      <section class="text-right col-md-3 col-md-offset-7"><a target="_blank" href="http://www.miitbeian.gov.cn/">京ICP备14054212号</a>  Powered by <a href="http://github.com/mojombo/jekyll/">Jekyll & Github</a></section>
+    </footer>
+    <!-- 底部 end -->
+
+    <script>
+      $(".tip").tooltip({trigger:'hover',placement:'top'})
+    </script>
+  </body>
+</html>

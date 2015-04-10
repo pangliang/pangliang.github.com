@@ -1,0 +1,43 @@
+<article id="post">
+	
+  <header class="page-header">
+    <h1 class="">{{ page.title }}</h1>
+    <div class="btn-group btn-group-sm">
+      {% assign categories_list = page.categories %}
+      {% for category in categories_list %}
+      <a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
+        <button class="btn btn-sm btn-success" type="button">{{ category | join: "/" }} <span class="badge">{{ site.categories[category].size }}</span></button>
+      </a>
+      {% endfor %}
+      {% assign tags_list = page.tags %}
+      {% for tag in tags_list %} 
+      <a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref">
+        <button class="btn btn-sm btn-primary" type="button">{{ tag }} <span class="badge">{{ site.tags[tag].size }}</span></button>
+      </a>
+      {% endfor %}
+    </div>
+  </header>
+
+  <section class="post-content">
+    {{ content }}
+  </section>
+
+  <footer class="post-footer">
+    <figure class="author-image">
+      <a class="img" style="background-image: url(/favicon.ico)"><span class="hidden">胖梁's Picture</span></a>
+    </figure>
+  </footer>
+
+  <ul class="pager">
+  {% if page.previous %}
+    <li class="previous"><a href="{{ page.previous.url }}" class="prev" title="{{ page.previous.title }}">&larr; 上一篇</a></li>
+  {% endif %}
+  {% if page.next %}
+    <li class="next"><a href="{{ page.next.url }}" class="next" title="{{ page.next.title }}">下一篇 &rarr;</a></li>
+  {% endif %}
+  </ul>
+
+  
+</article><!-- End Page -->
+
+{% include JB/comments %}
