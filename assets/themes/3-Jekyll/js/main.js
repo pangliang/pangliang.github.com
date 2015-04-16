@@ -7,6 +7,7 @@ $(function() {
       sidebar = $('#sidebar'),
       main    = $('#main'),
       menu    = $('#menu'),
+      search  = $('#search-input'),
       x1, y1;
 
   // run this function after pjax load.
@@ -74,6 +75,12 @@ $(function() {
   // Menu
   menu.on('click', function() {
     $(this).add(sidebar).toggleClass('open');
+  });
+
+  $('#search-input').on('input', function(e){
+    console.log(this.value)
+    toc.hide();
+    $('.toc-link:contains(' + this.value + ')').fadeIn(350);
   });
 
 });
