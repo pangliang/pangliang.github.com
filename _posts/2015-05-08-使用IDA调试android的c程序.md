@@ -23,12 +23,13 @@ excerpt:
 2. ida慢慢attach;在想要断的地方下好断子 (这个attach不是上面的attach)
 3. 使用 `jdb -connect com.sun.jdi.SocketAttach:hostname=127.0.0.1,port=8700` 真正attach, 此时游戏运行
 
-##问题
-
-###attach之后只看到一个进程: 
+## attach之后只看到一个进程: 
 
 `android_server`没有用root运行, 或者shell并不是root, 比如魅族mx3, 虽然有root权限, 但是shell不是真root
 
+## 魅族MX3获得shell root
+
+mx3的rom默认可以开启`系统权限`, 但是使用shell还是无法切换到root用户; 解决办法是安装`SuperSU`软件
 
 
 

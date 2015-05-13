@@ -31,7 +31,7 @@ github page manager, alfred workflow
 
 alfred keyword is `gp`
 
-![7da330f5-e6fb-4a48-835b-e7caf2bfb001](https://cloud.githubusercontent.com/assets/3114995/4807774/94768a24-5e98-11e4-9374-e865fd52926b.png)
+![7da330f5-e6fb-4a48-835b-e7caf2bfb001]({{ site.image_dir }}/2015/20150513034730.png)
 
 ##Edit default templet:
 
@@ -47,7 +47,7 @@ it will create new post file in dir `{dirname}`
 
 	gp new dirname/title
   	
-![9c63d7ed-19e3-4cdc-b4b1-fa879d4b601d](https://cloud.githubusercontent.com/assets/3114995/4807784/ba6c9bf6-5e98-11e4-9457-0281f8a48c58.png)
+![9c63d7ed-19e3-4cdc-b4b1-fa879d4b601d]({{ site.image_dir }}/2015/20150513034807.png)
   
 ##Edit post file
 
@@ -55,5 +55,5 @@ it will search the file
 
   	gp edit *search* 
   	
-![70f992ae-3a6d-4e10-9230-074506cbbb0b](https://cloud.githubusercontent.com/assets/3114995/4807792/d1b69604-5e98-11e4-9e24-0ddc24c1de78.png)
+![70f992ae-3a6d-4e10-9230-074506cbbb0b]({{ site.image_dir }}/2015/20150513034819.png)
 

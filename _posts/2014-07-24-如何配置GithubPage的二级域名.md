@@ -6,7 +6,7 @@ excerpt: 介绍如何配置github page的二级域名, 如何将不同二级域�
 ---
 {% include JB/setup %}
 
-<img width="650px" src="/assets/images/posts/subdomain_for_github_page.png" alt="...">
+<img width="650px" src="{{ site.image_dir }}/2014/20140724000000.png" alt="...">
 
 #Github Page种类
 1. `UserPage`:    用户的整个站点, 这个是最出github支持的类型, 创建一个形如username.github.com的项目就可以
