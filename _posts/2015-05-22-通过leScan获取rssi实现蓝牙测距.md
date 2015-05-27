@@ -104,7 +104,7 @@ BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
 				adapter.stopLeScan(this);
 				
 				//设备连接上gatt
-				device.connectGatt(context, false, BluetoothIO.this);
+				device.connectGatt(context, false, gattCallback);
 			}
 		});
 ```
