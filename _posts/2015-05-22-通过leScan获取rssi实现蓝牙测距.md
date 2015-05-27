@@ -55,3 +55,57 @@ android API level 21 也就是android 5.0 还多了一个 `android.bluetooth.le`
 
 看到`ScanSettings`还有`getReportDelayMillis()`, 看来还可以设置扫描的频率; 手头没有android5.0, 没法测试了...
 
+## 5月27日更新
+
+之前也不是很清楚蓝牙的api, 其实这个不应该这么来用
+
+`BluetoothGatt`里有个`readRemoteRssi()'函数, 每次读取都会获取新的RSSI值, 所以要监控的话起个线程不停读这个函数就好了
+
+简单使用方法:
+
+```java
+//实现个gattcallback
+
+BluetoothGattCallback gattCallback = new BluetoothGattCallback()
+{
+	@Override
+	public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState)
+	{
+		//设备连接状态改变会回调这个函数
+		super.onConnectionStateChange(gatt, status, newState);
+		if (newState == BluetoothProfile.STATE_CONNECTED)
+		{
+			//连接成功, 可以把这个gatt 保存起来, 需要读rssi的时候就
+			gatt.readRemoteRssi();
+		}
+	}
+	
+	@Override
+	public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status)
+	{
+		super.onReadRemoteRssi(gatt, rssi, status);
+		if (BluetoothGatt.GATT_SUCCESS == status)
+		{
+			//读取成功, rssi就是新的值
+		} 
+	}
+}
+
+
+//开启扫描
+BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+		adapter.startLeScan(new LeScanCallback() {
+			@Override
+			public void onLeScan(final BluetoothDevice device, final int rssi,
+					final byte[] scanRecord)
+			{
+				//扫到设备, 停止扫描
+				BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+				adapter.stopLeScan(this);
+				
+				//设备连接上gatt
+				device.connectGatt(context, false, BluetoothIO.this);
+			}
+		});
+```
+
