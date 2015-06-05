@@ -49,6 +49,10 @@ git push gitcafe master:gitcafe-pages
 
 ![]({{ site.image_dir }}/2015/20150605054151.png)
 
+### 百度也能抓去成功了
+
+![]({{ site.image_dir }}/2015/20150605055448.png)
+
 ### 怎么检查github page 是否对?
 
 人在国内, 怎么检查, 两个办法, 把dns指向8.8.8.8, 或者添加hosts强制指向`192.30.252.153`

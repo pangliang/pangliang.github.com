@@ -2,7 +2,7 @@
 
 ## 我的技术博客
 
-<http://liang8305.github.com/>
+<http://www.zhaoxiaodan.com/>
 
 ## 微博
 
