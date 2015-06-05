@@ -38,3 +38,8 @@ git push -v gitcafe refs/heads/master:refs/heads/gitcafe-pages
 - 把`_config.yml`中的`production_url`修改为gitcafe的地址:
 
 > production_url : http://pangliang.gitcafe.io
+
+
+以后有修改, github和gitcafe同时推送就好了:
+
+- 
