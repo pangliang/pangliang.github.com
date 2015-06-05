@@ -42,3 +42,15 @@ git push gitcafe master:gitcafe-pages
 - 把域名添加多几个A记录, 按`海外`区分, `海外`的就走github好了, 国内走gitcafe, 然后单独再加个给baidu的索引, 就像这样:
 
 ![]({{ site.image_dir }}/2015/20150605053529.png)
+
+### 效果
+
+在国内访问, 就自动走了gitcafe的ip, 就像这样:
+
+![]({{ site.image_dir }}/2015/20150605054151.png)
+
+### 怎么检查github page 是否对?
+
+人在国内, 怎么检查, 两个办法, 把dns指向8.8.8.8, 或者添加hosts强制指向`192.30.252.153`
+
+![]({{ site.image_dir }}/2015/20150605054917.png)
