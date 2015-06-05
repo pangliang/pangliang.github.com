@@ -8,7 +8,6 @@ excerpt:
 {% include JB/setup %}
 
 
-
 虽然咱的博客也就是简单的做个笔记, 但是还是奇怪于, 访问统计中百度的来源少的可怜, 基本没有; 一直也没管; 因为我就是做笔记, 给自己看的;
 
 今天群里聊天, 才知道原来github 把百度爬虫给屏蔽了.
@@ -19,22 +18,27 @@ excerpt:
 
 - 注册个gitcafe帐号,最好跟github用户名一致
 - gitcafe创建一个跟用户名一样的项目
-- 修改原来github page的git配置, 添加多一个remote, 注意修改为自己的用户名和项目名
+- 修改原来github page的git配置, 添加多一个remote, 名字叫`gitcafe`, 注意修改为自己的用户名和项目名
 
 ```
+#原来的master只关联github remote
+[branch "master"]
+        remote = github
+        merge = refs/heads/master
+        
+#添加gitcafe remote
 [remote "gitcafe"]
-url = https://gitcafe.com/pangliang/pangliang.git
-fetch = +refs/heads/*:refs/remotes/gitcafe/*
-pushurl = https://gitcafe.com/pangliang/pangliang.git
+        url = https://gitcafe.com/pangliang/pangliang.git
+        fetch = +refs/heads/*:refs/remotes/gitcafe/*
 ```
 
 - 把本地的`master`分支push到gitcafe的`gitcafe-pages`分支
 
 ```bash
-git push -v gitcafe refs/heads/master:refs/heads/gitcafe-pages
+git push gitcafe master:gitcafe-pages
 ```
 
-- 如果原来有`CNAME`的话, 在gitcafe上删掉它
-- 把`_config.yml`中的`production_url`修改为gitcafe的地址:
+- 修改gitcafe上的cname
+- 把域名添加多几个A记录, 按`海外`区分, `海外`的就走github好了, 国内走gitcafe, 然后单独再加个给baidu的索引, 就像这样:
 
-> production_url : http://pangliang.gitcafe.io
+![]({{ site.image_dir }}/2015/20150605053529.png)
