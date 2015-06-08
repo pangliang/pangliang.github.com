@@ -1,0 +1,5 @@
+---
+# Remember to set production_url in your _config.yml file!
+title : rebots
+---
+Sitemap: {{site.production_url}}/sitemap.txt
