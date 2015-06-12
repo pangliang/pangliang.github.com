@@ -1,6 +1,6 @@
 ---
 layout: post
-categories : [php]
+categories : [lnmp]
 tags : [systemtap]
 excerpt: 检查php页响应时间,以前只能自己埋点. 自从有了systemstap...
 ---

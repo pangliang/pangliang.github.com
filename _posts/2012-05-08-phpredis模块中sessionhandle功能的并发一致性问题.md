@@ -1,6 +1,6 @@
 ---
 layout: post
-categories : [php]
+categories : [lnmp]
 tags : [redis, php, session, 并发一致性]
 excerpt: 通过phpredis模块一个并发问题,分析php session的机制
 ---

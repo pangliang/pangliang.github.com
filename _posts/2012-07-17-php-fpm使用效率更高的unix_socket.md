@@ -1,6 +1,6 @@
 ---
 layout: post
-categories : [php]
+categories : [lnmp]
 tags : [什么是, 性能优化]
 excerpt: php-fpm使用UDS效率更高
 ---

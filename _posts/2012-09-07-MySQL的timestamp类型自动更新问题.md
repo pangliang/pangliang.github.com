@@ -1,6 +1,6 @@
 ---
 layout: post
-categories : [mysql]
+categories : [lnmp]
 tags : [mysql, timestamp]
 excerpt: mysql 中 TIMESTAMP 列的几种声明方式各有什么不同?
 ---

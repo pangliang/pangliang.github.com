@@ -1,6 +1,6 @@
 ---
 layout : post
-categories: [docker]
+categories: [其他]
 tags : []
 keywords : aliyun, 阿里云, 无法启动
 excerpt: 

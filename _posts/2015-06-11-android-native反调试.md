@@ -1,7 +1,7 @@
 ---
 layout : post
-categories: [android]
-tags : [加密, 解密, 反编译, 调试, natvie,]
+categories: [java, android]
+tags : [加密, 解密, 反编译, 调试, natvie, jni]
 keywords : 
 excerpt: 
 ---

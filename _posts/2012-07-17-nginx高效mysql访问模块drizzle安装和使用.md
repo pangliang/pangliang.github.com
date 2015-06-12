@@ -1,6 +1,6 @@
 ---
 layout: post
-categories : [nginx]
+categories : [lnmp]
 tags : [nginx, mysql, drizzle, 性能优化, 高效]
 excerpt: drizzle可以让nginx直接访问mysql检索出数据作为resp返回给页面
 ---

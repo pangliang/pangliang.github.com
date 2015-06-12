@@ -1,6 +1,6 @@
 ---
 layout: post
-categories : [nginx]
+categories : [lnmp]
 tags : [nginx, tengine, nginx_tcp_proxy_module, mysql, 负载均衡]
 excerpt: this is sample excerpt....
 ---

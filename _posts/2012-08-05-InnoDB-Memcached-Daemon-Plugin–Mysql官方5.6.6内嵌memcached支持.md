@@ -1,6 +1,6 @@
 ---
 layout: post
-categories : [mysql]
+categories : [lnmp]
 tags : []
 excerpt: innodb-memcached.html文档翻译
 ---
