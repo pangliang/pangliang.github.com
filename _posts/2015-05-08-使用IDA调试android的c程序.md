@@ -31,6 +31,17 @@ excerpt:
 
 mx3的rom默认可以开启`系统权限`, 但是使用shell还是无法切换到root用户; 解决办法是安装`SuperSU`软件
 
+## 放在/sdcard 里不能运行
 
+sdcard 默认会格式化为FAT32, 所以在这个里面的所有文件都没有-x 权限, 解决办法就是放到`/data/local/tmp`目录下
+
+## mac怎么调试
+在Paralle 跑win8, win8 跑 ida, ida是通过ip去attach的, 那就得让win8 连到`外界`能`看到`的网络, 虚拟网卡使用`桥接`, 接到比如公司wifi上
+
+如果用真机, 真机也连到wifi上就行了
+
+如果是Genymotion, VitrualBox里的虚拟网卡同样设置成`桥接`, 连到wifi, 那win8和Genymotion 就在同一个网络了
+
+然后在路由器把ip固定住
 
 
