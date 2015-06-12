@@ -12,7 +12,8 @@
     <ul id="sidebar-tags">
       <li class="sidebar-tag active" data-filter="all">全部文章</li>
       {% if site.filter == 'category' %}
-        {% for category in site.categories %}
+        {% assign categories_list = site.categories | sort %}  
+        {% for category in categories_list %}
           <li class="sidebar-tag" data-filter="{{ category | first }}">{{ category | first }}</li>
         {% endfor %}
       {% elsif site.filter == 'tag' %}
