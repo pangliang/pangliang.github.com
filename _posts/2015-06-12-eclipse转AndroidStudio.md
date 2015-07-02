@@ -34,10 +34,6 @@ android {
             abiFilters "x86", "armeabi"
         }
     }
-    sourceSets.main {
-        jniLibs.srcDir 'src/main/jniLibs' //如果依赖其他.so ,指定目录
-        jni.srcDirs 'src/main/jni'  //自己的jni文件目录, 
-    }
     buildTypes {
         release {
             minifyEnabled false
