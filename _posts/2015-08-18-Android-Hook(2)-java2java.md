@@ -283,5 +283,9 @@ public class Demo2
 最好的就是, 我把原函数改掉, 然后获取信息, 然后转发给一个java层处理器, 告诉它, 被hook的是这个函数, 对象是这个, 参数是这些, 然后勾子是这个, 就可以了, Handler 勾子的调用都由这个java层处理器来做, 而不是natviceFunc里,  native里不需要做太多逻辑
 
 
+具体实现就不在做了, 因为[alibaba/dexposed](https://github.com/alibaba/dexposed)项目已经做的很好了, 具体可以看它的实现
 
+我自己也做了些注释:
+
+> [pangliang/dexposed](https://github.com/alibaba/dexposed)
 
