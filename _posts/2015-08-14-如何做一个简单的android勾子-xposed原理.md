@@ -16,33 +16,13 @@ excerpt:
 
 ## 最简单的hook
 
-MainActivity中有个test函数, 原来返回11111, 在调用hook之前正常返回的; 调用hook之后, 调用`同一个函数`, 但是却返回22222
+Demo1中有个test函数, 在调用hook之前正常返回”11111”; 
+调用hook之后, 却返回”newTestMethod”, 被我们给`修改`了
 
 ```java
-public class MainActivity extends Activity
+public class Demo1
 {
-	static {
-		System.loadLibrary("hookdemo");
-	}
-
-	public static final String TAG = "===[hookdemo]===";
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-
-		String param1 = "param1";
-		Log.d(TAG, "===========before hook test:" + this.test(param1));
-		hook(MainActivity.class, "test", "(Ljava/lang/String;)Ljava/lang/String;");
-		Log.d(TAG, "===========after hook test:" + this.test(param1));
-
-		Log.d(TAG, "===========before hook staticTest:" + this.staticTest(param1));
-		hook(MainActivity.class, "staticTest", "(Ljava/lang/String;)Ljava/lang/String;");
-		Log.d(TAG, "===========after hook staticTest:" + this.staticTest(param1));
-
-	}
+	String TAG = "===[hookdemo]===";
 
 	public static String staticTest(String param1)
 	{
@@ -54,7 +34,19 @@ public class MainActivity extends Activity
 		return "11111";
 	}
 
-	public native void hook(Class<?> clazzToHook, String methodName, String methodSig);
+	public void demo()
+	{
+		String param1 = "param1";
+		Log.d(TAG, "===========before hook test:" + this.test(param1));
+		hook(Demo1.class, "test", "(Ljava/lang/String;)Ljava/lang/String;");
+		Log.d(TAG, "===========after hook test:" + this.test(param1));
+
+		Log.d(TAG, "===========before hook staticTest:" + this.staticTest(param1));
+		hook(Demo1.class, "staticTest", "(Ljava/lang/String;)Ljava/lang/String;");
+		Log.d(TAG, "===========after hook staticTest:" + this.staticTest(param1));
+	}
+
+	private native void hook(Class<?> clazzToHook, String methodName, String methodSig);
 }
 ```
 
@@ -65,7 +57,7 @@ ndk 中的部分
 #include "log.h"
 #include "Dalvik.h"
 
-void showMethodInfo(const Method* method)
+static void showMethodInfo(const Method* method)
 {
     //看看method的各个属性都是啥:
     LOGD("accessFlags:%d",method->accessFlags);
@@ -77,14 +69,10 @@ void showMethodInfo(const Method* method)
 }
 
 /**
- * 替换原来java类中test方法的 本地c 函数
- * args : 原来函数的参数数组
- * pResult: 返回值
+ * 使用jni GetMethodID 方法获取jmethodID 强制转为 Method 的hook 方法 示例
  */
 static void newTestMethod(const u4* args, JValue* pResult,
                           const Method* method, struct Thread* self) {
-
-    showMethodInfo(method);
 
     // args 是原来函数的参数数组, 原来test函数只有一个String型参数
     // 并且要注意, 如果是不是static函数, 下标0 是函数所在类的实例obj
@@ -108,16 +96,12 @@ static void newTestMethod(const u4* args, JValue* pResult,
     return;
 }
 
-/**
- * hook 的jni 函数
- */
 extern "C" JNIEXPORT void JNICALL
-Java_com_zhaoxiaodan_hookdemo_MainActivity_hook(JNIEnv *env, jobject instance, jobject clazzToHook,
+Java_com_zhaoxiaodan_hookdemo_Demo1_hook(JNIEnv *env, jobject instance, jobject clazzToHook,
                                                 jstring methodName_, jstring methodSig_) {
 
     const char *methodName = env->GetStringUTFChars(methodName_, 0);
     const char *methodSig = env->GetStringUTFChars(methodSig_, 0);
-
 
     jmethodID methodIDToHook = env->GetMethodID((jclass) clazzToHook,methodName,methodSig);
 
@@ -161,33 +145,37 @@ Java_com_zhaoxiaodan_hookdemo_MainActivity_hook(JNIEnv *env, jobject instance, j
     env->ReleaseStringUTFChars(methodName_, methodName);
     env->ReleaseStringUTFChars(methodSig_, methodSig);
 }
-
-extern "C" JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved)
-{
-
-    JNIEnv *env = nullptr;
-    if (vm->GetEnv((void**) &env, JNI_VERSION_1_6) != JNI_OK) {
-        return -1;
-    }
-
-    return JNI_VERSION_1_6;
-}
-
 ```
 
 运行之后得到:
 
 ```
-===[hookdemo]===﹕ ===========before hook:11111
-[---hookdemo---]﹕ 1
-[---hookdemo---]﹕ Lcom/zhaoxiaodan/hookdemo/MainActivity;
-[---hookdemo---]﹕ MainActivity.java
-[---hookdemo---]﹕ 334
-[---hookdemo---]﹕ test
-[---hookdemo---]﹕ LL
-[---hookdemo---]﹕ param1:
-===[hookdemo]===﹕ ===========after hook:22222
+/===[hookdemo]===﹕ ===========before hook test:11111
+/[---hookdemo---]﹕ accessFlags:1
+/[---hookdemo---]﹕ clazz->descriptor:Lcom/zhaoxiaodan/hookdemo/MainActivity;
+/[---hookdemo---]﹕ clazz->sourceFile:MainActivity.java
+/[---hookdemo---]﹕ methodIndex:334
+/[---hookdemo---]﹕ name:test
+/[---hookdemo---]﹕ shorty:LL
+/[---hookdemo---]﹕ param1:param1
+/===[hookdemo]===﹕ ===========after hook test:newTestMethod
+/===[hookdemo]===﹕ ===========before hook staticTest:staticTest
+/dalvikvm﹕ GetMethodID: not returning static method Lcom/zhaoxiaodan/hookdemo/MainActivity;.staticTest (Ljava/lang/String;)Ljava/lang/String;
+/[---hookdemo---]﹕ accessFlags:9
+/[---hookdemo---]﹕ clazz->descriptor:Lcom/zhaoxiaodan/hookdemo/MainActivity;
+/[---hookdemo---]﹕ clazz->sourceFile:MainActivity.java
+/[---hookdemo---]﹕ methodIndex:0
+/[---hookdemo---]﹕ name:staticTest
+/[---hookdemo---]﹕ shorty:LL
+/[---hookdemo---]﹕ param1:param1
+/===[hookdemo]===﹕ ===========after hook staticTest:newTestMethod
 ```
+
+原理就是, Method结构体表示了一个java层函数, 而其中的accessFlags属性如果是ACC_NATIVE , dvm在call 原java层函数的时候, 则会转向调用 属性nativeFunc 所指向的函数
+
+所以我们把不是native的java层函数的accessFlags强制改为ACC_NATIVE, 然后把nativeFunc 指向我们的新函数, 则完成了方法的修改
+
+只不过, 这里使用native方法替换了java层的原方法
 
 
 
