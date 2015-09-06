@@ -120,7 +120,7 @@ body {
     height: 100%;
     margin: 0;
     color: #283444;
-    font: 400 16px/1 "Open Sans", "Hiragino Sans GB", sans-serif;
+    font-family: "Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
     background: #F8F8F8;
     -webkit-font-smoothing: subpixel-antialiased;
     overflow: hidden
@@ -208,6 +208,7 @@ input::-moz-focus-inner, textarea::-moz-focus-inner, button::-moz-focus-inner {
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     transition: color 0.15s linear, box-shadow 0.3s cubic-bezier(0.77, 0, 0.175, 1);
     cursor: pointer
+    font-weight: bold;
 }
 
 .sidebar-tag:hover {
