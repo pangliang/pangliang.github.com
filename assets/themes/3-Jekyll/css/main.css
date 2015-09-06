@@ -207,7 +207,7 @@ input::-moz-focus-inner, textarea::-moz-focus-inner, button::-moz-focus-inner {
     color: rgba(255, 255, 255, 0.7);
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     transition: color 0.15s linear, box-shadow 0.3s cubic-bezier(0.77, 0, 0.175, 1);
-    cursor: pointer
+    cursor: pointer;
     font-weight: bold;
 }
 
