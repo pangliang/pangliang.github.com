@@ -32,13 +32,13 @@
       {% if site.filter == 'category' %}
         {% for post in site.posts %}
           <a class="toc-link" data-tags="{{ post.categories | join: ' ' }}" href="{{ post.url }}">
-            {{ post.slug }}
+            {% if post.slug %}{{ post.slug }}{% else %}{{ post.title }}{% endif %}
           </a>
         {% endfor %}
       {% elsif site.filter == 'tag' %}
         {% for post in site.posts %}
           <a class="toc-link" data-tags="{{ post.tags | join: ' ' }}" href="{{ post.url }}">
-            {{ post.slug }}
+            {% if post.slug %}{{ post.slug }}{% else %}{{ post.title }}{% endif %}
           </a>
         {% endfor %}
       {% endif %}
