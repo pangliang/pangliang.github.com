@@ -28,18 +28,17 @@
     <div id="search-box">
       <input id="search-input" type="text" placeholder="Search" />
     </div>
-
     <nav id="toc">
       {% if site.filter == 'category' %}
         {% for post in site.posts %}
           <a class="toc-link" data-tags="{{ post.categories | join: ' ' }}" href="{{ post.url }}">
-            {{ post.title }}
+            {{ post.slug }}
           </a>
         {% endfor %}
       {% elsif site.filter == 'tag' %}
         {% for post in site.posts %}
           <a class="toc-link" data-tags="{{ post.tags | join: ' ' }}" href="{{ post.url }}">
-            {{ post.title }}
+            {{ post.slug }}
           </a>
         {% endfor %}
       {% endif %}
