@@ -5,7 +5,7 @@
     <span class="post-meta-span tag">{{ page.tags | join: ', ' }}</span>
     {% endif %}
   </div>
-  <h1 class="post-title">{{ page.slug }}</h1>
+  <h1 class="post-title">{% if post.slug %}{{ post.slug }}{% else %}{{ post.title }}{% endif %}</h1>
   {{ content }}
 </article>
 
