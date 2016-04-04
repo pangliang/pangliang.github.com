@@ -1,8 +1,8 @@
 ---
 layout : post
-categories: [Java]
+categories: [java]
 tags : [tomcat, 游戏开发]
-excerpt: 
+excerpt:
 ---
 {% include JB/setup %}
 

@@ -1,9 +1,9 @@
 ---
 layout : post
-categories: [其他]
+categories: [android]
 tags : [小米手环, 蓝牙测距, BLE]
-keywords : 
-excerpt: 
+keywords :
+excerpt:
 ---
 {% include JB/setup %}
 
@@ -79,7 +79,7 @@ BluetoothGattCallback gattCallback = new BluetoothGattCallback()
 			gatt.readRemoteRssi();
 		}
 	}
-	
+
 	@Override
 	public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status)
 	{
@@ -87,7 +87,7 @@ BluetoothGattCallback gattCallback = new BluetoothGattCallback()
 		if (BluetoothGatt.GATT_SUCCESS == status)
 		{
 			//读取成功, rssi就是新的值
-		} 
+		}
 	}
 }
 
@@ -102,10 +102,9 @@ BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
 				//扫到设备, 停止扫描
 				BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
 				adapter.stopLeScan(this);
-				
+
 				//设备连接上gatt
 				device.connectGatt(context, false, gattCallback);
 			}
 		});
 ```
-
