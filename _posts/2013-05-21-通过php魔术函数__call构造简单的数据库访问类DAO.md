@@ -4,7 +4,7 @@ categories : [lnmp]
 tags : []
 excerpt: 缓存的使用比较普遍了, 如果构造一个简单的数据库访问类, 缩小业务代码的逻辑,
 ---
-{% include JB/setup %}
+
 
 {% highlight php linenos %}
 <?php

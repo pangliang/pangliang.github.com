@@ -4,7 +4,7 @@ categories : [lnmp]
 tags : [redis, php, session, 并发一致性]
 excerpt: 通过phpredis模块一个并发问题,分析php session的机制
 ---
-{% include JB/setup %}
+
 
 session 在php中的生命周期，已文件存储为例
 

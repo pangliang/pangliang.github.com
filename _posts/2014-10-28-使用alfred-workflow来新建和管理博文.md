@@ -5,7 +5,7 @@ tags : [github, alfred, blog]
 keywords : github page, alfred workflow, blog
 excerpt: 
 ---
-{% include JB/setup %}
+
 
 
 gp_manager

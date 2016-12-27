@@ -4,7 +4,7 @@ categories : [mac]
 tags : [ramdisk, caches]
 excerpt: 8G内存的电脑不要浪费了, 把各种缓存文件放到内存中吧...
 ---
-{% include JB/setup %}
+
 
 OS X 系统主要存放应用程序缓存的目录，也就是 ~/Library/Caches  
 

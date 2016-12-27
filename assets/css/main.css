@@ -20,8 +20,8 @@
 
 @font-face {
     font-family: 'icomoon';
-    src: url("/assets/themes/3-Jekyll/icon/icomoon.eot?-oxan25");
-    src: url("/assets/themes/3-Jekyll/icon/icomoon.eot?#iefix-oxan25") format("embedded-opentype"), url("/assets/themes/3-Jekyll/icon/icomoon.woff?-oxan25") format("woff"), url("/assets/themes/3-Jekyll/icon/icomoon.ttf?-oxan25") format("truetype"), url("/assets/themes/3-Jekyll/icon/icomoon.svg?-oxan25#icomoon") format("svg");
+    src: url("/assets/icon/icomoon.eot?-oxan25");
+    src: url("/assets/icon/icomoon.eot?#iefix-oxan25") format("embedded-opentype"), url("/assets/icon/icomoon.woff?-oxan25") format("woff"), url("/assets/icon/icomoon.ttf?-oxan25") format("truetype"), url("/assets/icon/icomoon.svg?-oxan25#icomoon") format("svg");
     font-weight: normal;
     font-style: normal
 }

@@ -4,7 +4,7 @@ categories : [lnmp]
 tags : [mysql, timestamp]
 excerpt: mysql 中 TIMESTAMP 列的几种声明方式各有什么不同?
 ---
-{% include JB/setup %}
+
 
 在CREATE TABLE语句中，第1个TIMESTAMP列可以用下面的任何一种方式声明：
 

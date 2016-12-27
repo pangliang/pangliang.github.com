@@ -5,7 +5,7 @@ tags : [eclipse, adt, android studio, ndk]
 keywords : 
 excerpt: 
 ---
-{% include JB/setup %}
+
 
 最近搞ndk比较多, eclipse的ndk还算不错, 但是cdt有点傻傻的, 我本来加了c++11的特性, 配置好了build也没有任何问题, cdt偏偏说认不出`std::thread`之类的
 

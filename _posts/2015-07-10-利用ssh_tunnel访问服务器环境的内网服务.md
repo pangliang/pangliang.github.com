@@ -5,7 +5,7 @@ tags : [RDS, ssh tunnel,内网]
 keywords : 
 excerpt: 
 ---
-{% include JB/setup %}
+
 
 项目最初觉得没有必要生产环境开发环境这么搞, 直接用rds做开发库了; 阿里云的数据库后台登录又必须先登录阿里云帐号; 不适合把帐号给多个人
 

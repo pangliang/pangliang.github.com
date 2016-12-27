@@ -4,7 +4,7 @@ categories : [lnmp]
 tags : []
 excerpt: innodb-memcached.html文档翻译
 ---
-{% include JB/setup %}
+
 
 官方文档:
 

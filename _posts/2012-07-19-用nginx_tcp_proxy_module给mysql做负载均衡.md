@@ -4,7 +4,7 @@ categories : [lnmp]
 tags : [nginx, tengine, nginx_tcp_proxy_module, mysql, 负载均衡]
 excerpt: this is sample excerpt....
 ---
-{% include JB/setup %}
+
 
 LVS 太重了, 自己在php里rand() slave又没办法健康检查, 自动上下线挂掉的mysql
 整个轻量的mysql负载均衡方案

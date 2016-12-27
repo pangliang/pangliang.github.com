@@ -5,7 +5,7 @@ tags : [黑屏, 闪退, 生命周期]
 keywords : 
 excerpt: 
 ---
-{% include JB/setup %}
+
 
 这次做个移动MM的支付SDK, 提交测试总是打回来说:
 

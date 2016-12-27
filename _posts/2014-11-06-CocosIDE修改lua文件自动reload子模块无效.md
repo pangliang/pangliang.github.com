@@ -5,7 +5,7 @@ tags : [cocos2dx, 游戏开发]
 keywords : cocos2dx, 游戏开发
 excerpt: 
 ---
-{% include JB/setup %}
+
 
 ##问题
 `Cocos Code IDE`在lua开发debug的时候, 如果修改了文件会自动reload, 这个功能能方便;

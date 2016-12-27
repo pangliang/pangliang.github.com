@@ -4,7 +4,7 @@ categories : ios
 tags : [usbmuxd, lockdown, 与iPhone连接, libimobiledevice]
 excerpt: 如何获取iphone已安装的app?如何获取iphone文件列表?iTunes使用一种叫"usbmux"的东西与iphone通信, 这个东西提供了一个USB - TCP的转换服务.usbmuxd可以实现一切...
 ---
-{% include JB/setup %}
+
 
 最开始研究与iphone通信, 都会想当然的google下usb协议, 必经iphone是通过usb线连接到电脑. 其实不然, iTunes是通过TCP协议与iPhone通信的
 

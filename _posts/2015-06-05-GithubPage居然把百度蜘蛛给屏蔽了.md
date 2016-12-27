@@ -5,7 +5,7 @@ tags : [github, githubpage, blog, baidu, 爬虫]
 keywords : 
 excerpt: 
 ---
-{% include JB/setup %}
+
 
 
 虽然咱的博客也就是简单的做个笔记, 但是还是奇怪于, 访问统计中百度的来源少的可怜, 基本没有; 一直也没管; 因为我就是做笔记, 给自己看的;

@@ -4,7 +4,7 @@ categories : [ios]
 tags : [iosopendev, jailbreak, ios, iphone, ipad, 越狱开发]
 excerpt: 介绍jb开发的系统配置方法
 ---
-{% include JB/setup %}
+
 
 ##mac端环境
 

@@ -4,7 +4,7 @@ categories : [ios]
 tags : [cydia, 打包, 越狱]
 excerpt: 通过编译好的app打包deb的方法
 ---
-{% include JB/setup %}
+
 
 ##修改编译选项重新打包
 

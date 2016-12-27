@@ -1,2 +1,25 @@
-{% include JB/setup %}
-{% include themes/{{ site.theme }}/default.html %}
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body>
+  {% include sidebar.html %}
+
+  <main id="main">
+    {{ content }}
+
+    <div class="footer">
+      <div class="container">
+        <p class="footer-entry"><a target="_blank" href="http://www.miitbeian.gov.cn/">京ICP备14054212号</a></p>
+        <p class="footer-entry">Buit with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and <a href="https://github.com/P233/3-Jekyll" target="_blank">3-Jekyll theme</a> • Hosted on <a href="https://pages.github.com/" target="_blank">Github</a></p>
+        <p class="footer-entry">{% include analytics %}</p>
+      </div>
+    </div>
+  </main>
+
+  <button id="menu">
+    <span id="menu-icons"></span>
+  </button>
+
+  {% include scripts.html %}
+</body>
+</html>

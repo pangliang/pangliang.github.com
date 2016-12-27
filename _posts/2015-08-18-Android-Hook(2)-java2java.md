@@ -5,7 +5,7 @@ tags : [hook, 勾子]
 keywords : 
 excerpt: 
 ---
-{% include JB/setup %}
+
 
 
 之前学习了如何做一个简单android的函数勾子, 而这个勾子是用native 的函数去hook java函数, 现在来学习如何封装让他可以实现java hook java

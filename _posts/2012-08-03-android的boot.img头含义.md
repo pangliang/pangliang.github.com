@@ -4,7 +4,7 @@ categories : [android]
 tags : [boot.img, android, rom]
 excerpt: rom 中 boot.img 文件格式
 ---
-{% include JB/setup %}
+
 
 * 4 * 2, magic，固定为”ANDROID!”
 * 4 * 1, kernel长度，小端unsigned类型

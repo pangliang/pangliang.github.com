@@ -5,7 +5,7 @@ tags : [固件, rom, dumper]
 keywords :
 excerpt:
 ---
-{% include JB/setup %}
+
 
 android固件是在mtdblock中, 但是会有很多个block, 
 

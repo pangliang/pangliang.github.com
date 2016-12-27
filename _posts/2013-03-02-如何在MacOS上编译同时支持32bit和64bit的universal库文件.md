@@ -4,7 +4,7 @@ categories : ios
 tags : []
 excerpt: 浅析如何在MacOS上编译同时支持32bit和64bit的universal库文件, 并记录编译libimobiledevice的过程
 ---
-{% include JB/setup %}
+
 
 原来总是依赖homebrew, 然后这个东西总是会吧-arch i386 -arch x86_64给你去掉, 无法编译出universal的包
 还不如自己下载包编译, 主要就是注意有些包使用了汇编代码(加速), 去掉这个功能或者分开编译即可

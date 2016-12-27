@@ -4,7 +4,7 @@ categories : [lnmp]
 tags : [什么是, 性能优化]
 excerpt: php-fpm使用UDS效率更高
 ---
-{% include JB/setup %}
+
 
 通过上个文章 , 本来觉得 在php-fpm 与mysql 通信时也需要开新的端口
 

@@ -5,7 +5,7 @@ tags : [小米手环, 蓝牙测距, BLE]
 keywords :
 excerpt:
 ---
-{% include JB/setup %}
+
 
 领导送了个小米的手环, 看到如果是小米手机, 支持手环免密码解锁手机. 但是现在用的是mx3, android4.4的, 不支持. 于是就想知道, 它怎么实现的
 

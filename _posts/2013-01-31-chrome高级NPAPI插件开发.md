@@ -4,7 +4,7 @@ categories : 其他
 tags : [chrome插件, chrome_plugin]
 excerpt: this is sample excerpt....
 ---
-{% include JB/setup %}
+
 
 
 ##注意事项

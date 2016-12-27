@@ -4,7 +4,7 @@ categories : [ios]
 tags : [curl, ios,  编译]
 excerpt: 给ios 使用的 curl 库的编译方法
 ---
-{% include JB/setup %}
+
 
 转自: https://github.com/miyabichan/cURL-SSL-for-iOS
 

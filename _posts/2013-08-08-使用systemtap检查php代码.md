@@ -4,7 +4,7 @@ categories : [lnmp]
 tags : [systemtap]
 excerpt: 检查php页响应时间,以前只能自己埋点. 自从有了systemstap...
 ---
-{% include JB/setup %}
+
 
 需要带debug的php
 ====

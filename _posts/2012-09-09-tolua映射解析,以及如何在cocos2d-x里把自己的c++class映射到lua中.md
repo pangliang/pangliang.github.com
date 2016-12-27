@@ -4,7 +4,7 @@ categories : [cocos2dx]
 tags : [cocos2dx, ios, httpclient, lua]
 excerpt: tolua解析, 实现自定义c++ 类库. 并映射到cocos2d-x的lua中使用
 ---
-{% include JB/setup %}
+
 
 不管引擎多强大,总会自己拓展一些类. 或者使用一些有源码包. 用c++实现然后再映射到lua里.
 

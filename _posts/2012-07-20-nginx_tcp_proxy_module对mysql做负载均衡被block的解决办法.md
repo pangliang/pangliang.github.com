@@ -4,7 +4,7 @@ categories : [lnmp]
 tags : [nginx, tengine, nginx_tcp_proxy_module, mysql, 负载均衡]
 excerpt: this is sample excerpt....
 ---
-{% include JB/setup %}
+
 
 上个文章用nginx_tcp_proxy_module 来给mysql 做均衡负载 ,
 在此模块对mysql 做健康检查时 发送空包 ,被max_connect_errors block 的问题 ,

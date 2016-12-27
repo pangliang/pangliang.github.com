@@ -4,7 +4,7 @@ categories: [其他]
 tags : [github, 博客, blog, github page]
 excerpt: 介绍如何配置github page的二级域名, 如何将不同二级域名指向不同的project
 ---
-{% include JB/setup %}
+
 
 <img width="650px" src="{{ site.image_dir }}/2014/20140724000000.png" alt="...">
 

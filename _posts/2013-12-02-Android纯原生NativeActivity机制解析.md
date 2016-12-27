@@ -4,7 +4,7 @@ categories : [android]
 tags : [源码阅读]
 excerpt:
 ---
-{% include JB/setup %}
+
 
 ##NativeActivity 机制
 

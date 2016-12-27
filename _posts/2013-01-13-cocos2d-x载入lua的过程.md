@@ -4,7 +4,7 @@ categories : [cocos2dx]
 tags : [cocos2dx, ios, lua]
 excerpt: lua脚本读入过程解析, 实现lua脚本的简单加密解密
 ---
-{% include JB/setup %}
+
 
 入口点在AppDelegate.cpp中:
 

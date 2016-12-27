@@ -4,7 +4,7 @@ categories: [cocos2dx]
 tags : [cocos2dx, 游戏开发, 视频播放, 插件]
 excerpt: 项目中需要播放视频, 编写了个视频播放插件, 并绑定到lua中供调用
 ---
-{% include JB/setup %}
+
 
 ###git:
 	
