@@ -117,3 +117,36 @@ func (p *tcpServer) Handle(clientConn net.Conn) {
 	}
 }
 ```
+
+### 精简总流程:
+
+```go
+func (n *NSQD) Main() {
+	tcpListener, err := net.Listen("tcp", n.getOpts().TCPAddress)
+	tcpServer := &tcpServer{ctx: ctx}
+	n.waitGroup.Wrap(func() {
+		protocol.TCPServer(n.tcpListener, tcpServer, n.getOpts().Logger)
+	})
+}
+
+func TCPServer(listener net.Listener, handler TCPHandler, l app.Logger) {
+	for {
+		clientConn, err := listener.Accept()
+		go handler.Handle(clientConn)
+	}
+}
+
+func (p *tcpServer) Handle(clientConn net.Conn) {
+	buf := make([]byte, 4)
+	_, err := io.ReadFull(clientConn, buf)
+	protocolMagic := string(buf)
+
+	var prot protocol.Protocol
+	switch protocolMagic {
+	case "  V2":
+		prot = &protocolV2{ctx: p.ctx}
+	}
+
+	err = prot.IOLoop(clientConn)
+}
+```
