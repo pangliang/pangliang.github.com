@@ -8,7 +8,9 @@ excerpt:
 
 ## TCPHandler
 
-根据上文, 我们直接看 nsqd.Main()
+上文理解了nsq怎么做启动和退出, 并且知道nsqlookup 启动了tcp 和 http 两个服务进程. 
+
+现在我们直接看 nsqd.Main()
 
 ```go
 func (n *NSQD) Main() {
@@ -31,7 +33,7 @@ func (n *NSQD) Main() {
 
 nsq 封装了一个TCPHandler, 当 listener.Accept() 接到client 的连接获取到connect 时, 交给 TCPHandler.Handle(net.Conn) 函数处理
 
-所有的 tcp 服务都可以复用此代码, 只需要实现不同的TCPHandler即可
+所有的 tcp 服务都可以复用此代码, 不同的服务内容, 只需要实现不同的TCPHandler即可
 
 ```go
 
@@ -59,6 +61,7 @@ func TCPServer(listener net.Listener, handler TCPHandler, l app.Logger) {
 		}
 		//启动一个线程, 交给 handler 处理, 这里使用的是 one connect per thread 模式
 		//因为golang的特性, one connect per thread 模式 实际上是  one connect per goroutine
+		//再加上golang将io操作都做了封装, 那么实际上这里是 one connect per event loop 模式
 		go handler.Handle(clientConn)
 	}
 
@@ -68,13 +71,7 @@ func TCPServer(listener net.Listener, handler TCPHandler, l app.Logger) {
 
 ## 协议不同版本 的 封装处理
 
-
-
-```go
-type Protocol interface {
-	IOLoop(conn net.Conn) error
-}
-```
+接到连接之后, 交给TCPHandler 处理, 这里是由tcpServer 实现:
 
 ```go
 
@@ -109,12 +106,22 @@ func (p *tcpServer) Handle(clientConn net.Conn) {
 		return
 	}
 
-	//交给具体实现处理
+	//交给具体protocol实现类处理每个连接
 	err = prot.IOLoop(clientConn)
 	if err != nil {
 		p.ctx.nsqd.logf("ERROR: client(%s) - %s", clientConn.RemoteAddr(), err)
 		return
 	}
+}
+```
+
+Handle 函数先读取4个字节的字符串作为版本号, 根据版本号选用具体的 protocol 实现, 这里的 "  V2"这个版本的协议由protocolV2 实现
+
+将协议封装, 方便以后不同协议的扩展
+
+```go
+type Protocol interface {
+	IOLoop(conn net.Conn) error
 }
 ```
 
