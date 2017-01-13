@@ -159,53 +159,65 @@ func SendFramedResponse(w io.Writer, frameType int32, data []byte) (int, error) 
 }
 ```
 
+读取并解析请求之后, 传给 p.Exec(client, params) 执行具体的请求
+
+```go
+func (p *protocolV2) Exec(client *clientV2, params [][]byte) ([]byte, error) {
+	//这个命令不需要做认证
+	if bytes.Equal(params[0], []byte("IDENTIFY")) {
+		return p.IDENTIFY(client, params)
+	}
+	// client 是否做了认证
+	err := enforceTLSPolicy(client, p, params[0])
+	if err != nil {
+		return nil, err
+	}
+	//一行一个请求, 一个命令中用 " " 空格分割参数, 第一个参数是 命令标志
+	switch {
+	case bytes.Equal(params[0], []byte("FIN")):
+		return p.FIN(client, params)
+	case bytes.Equal(params[0], []byte("RDY")):
+		return p.RDY(client, params)
+	case bytes.Equal(params[0], []byte("REQ")):
+		return p.REQ(client, params)
+	case bytes.Equal(params[0], []byte("PUB")):
+		return p.PUB(client, params)
+	case bytes.Equal(params[0], []byte("MPUB")):
+		return p.MPUB(client, params)
+	case bytes.Equal(params[0], []byte("DPUB")):
+		return p.DPUB(client, params)
+	case bytes.Equal(params[0], []byte("NOP")):
+		return p.NOP(client, params)
+	case bytes.Equal(params[0], []byte("TOUCH")):
+		return p.TOUCH(client, params)
+	case bytes.Equal(params[0], []byte("SUB")):
+		return p.SUB(client, params)
+	case bytes.Equal(params[0], []byte("CLS")):
+		return p.CLS(client, params)
+	case bytes.Equal(params[0], []byte("AUTH")):
+		return p.AUTH(client, params)
+	}
+	return nil, protocol.NewFatalClientErr(nil, "E_INVALID", fmt.Sprintf("invalid command %s", params[0]))
+}
+```
+
 ### 精简总流程:
 
 同样, 代码精简一下, IOLoop 里主要就是启动了两个线程, 一个处理订阅的消息的发送, 一个处理client 发过来的命令请求
 
 ```go
-
 func (p *protocolV2) IOLoop(conn net.Conn) error {
 
-	// 这个messagePump 名字很形象, 把要发送给client 的messgae 从 缓存池子里Pump 抽出来 做具体的发送
 	messagePumpStartedChan := make(chan bool)
 	go p.messagePump(client, messagePumpStartedChan)
-	<-messagePumpStartedChan  //TODO messagePump 里要做初始化, 具体是什么? 为什么需要这样阻塞一下IOLoop ?
+	<-messagePumpStartedChan
 
-	// 底下这个地方是 处理 client 的请求的
 	for {
-		// 读一个命令
-		line, err = client.Reader.ReadSlice('\n')
+		line, err = client.Reader.ReadSlice('\n')   // 读取
+		params := bytes.Split(line, separatorBytes) // 解析
+		response, err = p.Exec(client, params)		// 执行
 
-		// 拆分参数
-		params := bytes.Split(line, separatorBytes)
-
-		// 执行命令
-		var response []byte
-		response, err = p.Exec(client, params)
-
-		if err != nil {
-			//有错误发送错误回去
-			sendErr := p.Send(client, frameTypeError, []byte(err.Error()))
-			continue
-		}
-
-		if response != nil {
-			//有响应发送响应
-			err = p.Send(client, frameTypeResponse, response)
-		}
+		err = p.Send(client, frameTypeResponse, response) //发送结果
 	}
-
-	conn.Close()
-
-	// 通知 messagePump 退出
-	close(client.ExitChan)
-
-	// 如果订阅了Channel, 告诉channel 删除 client
-	if client.Channel != nil {
-		client.Channel.RemoveClient(client.ID)
-	}
-
-	return err
 }
 ```

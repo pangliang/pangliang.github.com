@@ -2,3 +2,28 @@
 <script src="{{ "/assets/js/jquery.pjax.js" | absolute_url }}"></script>
 <script src="{{ "/assets/js/nprogress.js" | absolute_url }}"></script>
 <script src="{{ "/assets/js/main.js" | absolute_url }}"></script>
+
+{% if page.flowchart %}
+<script src="{{ "/assets/js/raphael.min.js" | absolute_url }}"></script>
+<script src="{{ "/assets/js/flowchart.min.js" | absolute_url }}"></script>
+<script type="text/javascript">
+$(function() {
+	var code = $("#diagram-code");
+	code.hide();
+	var diagram = flowchart.parse(code.text());
+	diagram.drawSVG('diagram');
+});
+</script>
+{% endif %}
+
+{% if page.sequence %}
+<script src="{{ "/assets/js/snap.svg-min.js" | absolute_url }}"></script>
+<script src="{{ "/assets/js/underscore-min.js" | absolute_url }}"></script>
+<script src="{{ "/assets/js/sequence-diagram-min.js" | absolute_url }}"></script>
+<script src="{{ "/assets/js/webfontloader.js" | absolute_url }}"></script>
+<script type="text/javascript">
+$(function() {
+	$(".sequence").sequenceDiagram({theme: 'simple'});
+});
+</script>
+{% endif %}
