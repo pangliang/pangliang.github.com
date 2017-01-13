@@ -302,8 +302,10 @@ func (p *protocolV2) messagePump(client *clientV2, startedChan chan bool) {
 			}
 			msg.Attempts++
 
+			//TODO 这个是什么作用? 下面不是已经发送了? 怎么又塞到一个队列里?
 			subChannel.StartInFlightTimeout(msg, client.ID, msgTimeout)
 			client.SendingMessage()
+
 			// protocol 进行消息格式的打包, 再发送给Client
 			// 这里, Message 就发送给了 client
 			err = p.SendMessage(client, msg, &buf)
