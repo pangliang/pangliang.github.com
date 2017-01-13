@@ -142,7 +142,7 @@ input::-moz-focus-inner, textarea::-moz-focus-inner, button::-moz-focus-inner {
     left: 0;
     z-index: 20;
     width: 551px;
-    background: linear-gradient(136deg, #C2E987, #309E85);
+    background: linear-gradient(147deg, #00acff, rgba(62, 171, 195, 0.42));
     overflow: hidden;
     transition: left 0.35s cubic-bezier(0.77, 0, 0.175, 1), transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
     user-select: none
@@ -217,7 +217,7 @@ input::-moz-focus-inner, textarea::-moz-focus-inner, button::-moz-focus-inner {
 }
 
 .sidebar-tag.active {
-    color: #309E85;
+    color: #007fa0;
     box-shadow: inset 170px 0 0 rgba(255, 255, 255, 0.5)
 }
 
@@ -291,7 +291,7 @@ input::-moz-focus-inner, textarea::-moz-focus-inner, button::-moz-focus-inner {
 }
 
 #toc::-webkit-scrollbar-thumb {
-    background: #309E85
+    background: #33ccff
 }
 
 .toc-link {
@@ -305,7 +305,7 @@ input::-moz-focus-inner, textarea::-moz-focus-inner, button::-moz-focus-inner {
     white-space: nowrap;
     text-decoration: none;
     text-overflow: ellipsis;
-    color: #55606F;
+    color: #124d58;
     overflow: hidden;
     outline: none
 }
@@ -315,8 +315,8 @@ input::-moz-focus-inner, textarea::-moz-focus-inner, button::-moz-focus-inner {
     top: 2px;
     left: 12px;
     z-index: 1;
-    font-size: 18px;
-    color: #309E85;
+    font-size: 19px;
+    color: rgba(0, 148, 199, 0.57);
     transition: transform 0.15s linear
 }
 
